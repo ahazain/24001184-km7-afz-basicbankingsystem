@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kelola Saldo Bank</title>
-    <script src="bank_account.js" defer></script>
+    <title>Basic Banking System</title>
   </head>
   <body>
-    <h1>Kelola Saldo Bank</h1>
-    <button onclick="tambahSaldo()">Tambah Saldo</button>
-    <button onclick="kurangiSaldo()">Kurangi Saldo</button>
+    <h1>Basic Banking System</h1>
+
+    <h4>Saldo Anda: <span id="saldo">Rp 0.00</span></h4>
+
+    <button onclick="deposit()">Deposit</button>
+    <button onclick="withdraw()">Withdraw</button>
+
+    <script src="bank_account.js"></script>
+    <script src="banking_system.js"></script>
   </body>
 </html>

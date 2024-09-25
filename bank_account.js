@@ -1,41 +1,30 @@
-let saldo = 0;
-
-function tambahSaldo() {
-  let jumlah = parseFloat(
-    window.prompt("Masukkan jumlah saldo yang ingin ditambahkan:")
-  );
-  if (!isNaN(jumlah) && jumlah > 0) {
-    saldo += jumlah;
-    console.log(
-      "Saldo berhasil ditambahkan. Saldo baru Anda: Rp " + saldo.toFixed(2)
-    );
-    alert(
-      "Saldo berhasil ditambahkan. Saldo baru Anda: Rp " + saldo.toFixed(2)
-    );
-  } else {
-    console.log("Input tidak valid. Masukkan jumlah yang benar.");
-    alert("Input tidak valid. Masukkan jumlah yang benar.");
+class BankAccount {
+  constructor(initialBalance = 0) {
+    this.balance = initialBalance;
   }
-}
 
-function kurangiSaldo() {
-  let jumlah = parseFloat(
-    window.prompt("Masukkan jumlah saldo yang ingin dikurangi:")
-  );
-  if (!isNaN(jumlah) && jumlah > 0) {
-    if (jumlah <= saldo) {
-      saldo -= jumlah;
-      console.log(
-        "Saldo berhasil dikurangi. Saldo baru Anda: Rp " + saldo.toFixed(2)
-      );
-      alert(
-        "Saldo berhasil dikurangi. Saldo baru Anda: Rp " + saldo.toFixed(2)
-      );
+  deposit(amount) {
+    if (amount > 0) {
+      setTimeout(() => {
+        this.balance += amount;
+        console.log(`Deposit sebesar Rp ${amount.toFixed(2)} berhasil!`);
+      }, 1000); 
     } else {
-      console.log("Saldo tidak mencukupi.");
+      alert("Jumlah tidak valid.");
     }
-  } else {
-    console.log("Input tidak valid. Masukkan jumlah yang benar.");
-    alert("Input tidak valid. Masukkan jumlah yang benar.");
+  }
+
+  withdraw(amount) {
+    if (amount > 0 && amount <= this.balance) {
+      setTimeout(() => {
+        this.balance -= amount;
+        console.log(`Penarikan sebesar Rp ${amount.toFixed(2)} berhasil!`);
+      }, 1000); 
+    } else if (amount > this.balance) {
+      alert("Saldo tidak mencukupi.");
+    } else {
+      alert("Jumlah tidak valid.");
+    }
   }
 }
+module.exports = BankAccount;

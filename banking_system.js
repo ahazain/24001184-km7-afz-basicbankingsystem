@@ -1,26 +1,34 @@
+// const BankAccount = require("./bank_account");
+
 const myAccount = new BankAccount(1000);
 
-function updateBalanceDisplay(balance) {
-  document.getElementById("saldo").textContent = `Rp ${balance.toFixed(2)}`;
+function updateSaldo(newSaldo) {
+  document.getElementById("saldo").textContent = `Rp ${newSaldo.toFixed(2)}`;
 }
-updateBalanceDisplay(myAccount.balance);
+updateSaldo(myAccount.saldo);
 
 function deposit() {
   const amount = parseFloat(window.prompt("Masukkan jumlah deposit:"));
-  if (!isNaN(amount) && amount > 0) {
-    myAccount.deposit(amount);
-    setTimeout(() => updateBalanceDisplay(myAccount.balance), 1000);
-  } else {
-    alert("Masukkan jumlah yang valid.");
-  }
+  myAccount
+    .deposit(amount)
+    .then((message) => {
+      setTimeout(() => updateSaldo(myAccount.saldo), 1000);
+      alert(message);
+    })
+    .catch((err) => {
+      alert(err);
+    });
 }
 
 function withdraw() {
-  const amount = parseFloat(window.prompt("Masukkan jumlah penarikan:"));
-  if (!isNaN(amount) && amount > 0) {
-    myAccount.withdraw(amount);
-    setTimeout(() => updateBalanceDisplay(myAccount.balance), 1000);
-  } else {
-    alert("Masukkan jumlah yang valid.");
-  }
+  const amount = parseFloat(window.prompt("Masukkan jumlah withdraw:"));
+  myAccount
+    .withdraw(amount)
+    .then((message) => {
+      setTimeout(() => updateSaldo(myAccount.saldo), 1000);
+      alert(message);
+    })
+    .catch((err) => {
+      alert(err);
+    });
 }

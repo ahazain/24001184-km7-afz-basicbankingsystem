@@ -1,30 +1,38 @@
+
 class BankAccount {
-  constructor(initialBalance = 0) {
-    this.balance = initialBalance;
+  constructor(saldo = 0) {
+    this.saldo = saldo;
   }
 
   deposit(amount) {
-    if (amount > 0) {
+    return new Promise((resolve, reject) => {
       setTimeout(() => {
-        this.balance += amount;
-        console.log(`Deposit sebesar Rp ${amount.toFixed(2)} berhasil!`);
-      }, 1000); 
-    } else {
-      alert("Jumlah tidak valid.");
-    }
+        if (!isNaN(amount) && amount >= 0) {
+          this.saldo += amount;
+          resolve(`Deposit berhasil. Saldo Anda: Rp ${this.saldo}`);
+        } else {
+          reject("Input tidak valid. Mohon masukkan jumlah dengan benar");
+        }
+      }, 2000);
+    });
   }
 
   withdraw(amount) {
-    if (amount > 0 && amount <= this.balance) {
+    return new Promise((resolve, reject) => {
       setTimeout(() => {
-        this.balance -= amount;
-        console.log(`Penarikan sebesar Rp ${amount.toFixed(2)} berhasil!`);
-      }, 1000); 
-    } else if (amount > this.balance) {
-      alert("Saldo tidak mencukupi.");
-    } else {
-      alert("Jumlah tidak valid.");
-    }
+        if (!isNaN(amount) && amount > 0) {
+          if (amount <= this.saldo) {
+            this.saldo -= amount;
+            resolve(`withdrawl berhasil. Saldo baru anda: Rp ${this.saldo}`);
+          } else {
+            reject(`Saldo tidak mencukupi`);
+          }
+        } else {
+          reject(`Input tidak valid. Masukkan jumlah yang benar`);
+        }
+      }, 2000);
+    });
   }
 }
+
 module.exports = BankAccount;

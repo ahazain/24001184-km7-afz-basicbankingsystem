@@ -22,7 +22,7 @@ class BankAccount {
         if (!isNaN(amount) && amount > 0) {
           if (amount <= this.saldo) {
             this.saldo -= amount;
-            resolve(`withdrawl berhasil. Saldo baru anda: Rp ${this.saldo}`);
+            resolve(`withdraw berhasil. Saldo baru anda: Rp ${this.saldo}`);
           } else {
             reject(`Saldo tidak mencukupi`);
           }

@@ -12,7 +12,7 @@ class BankAccount {
         } else {
           reject("Input tidak valid. Mohon masukkan jumlah dengan benar");
         }
-      }, 2000);
+      }, 700);
     });
   }
 
@@ -29,7 +29,7 @@ class BankAccount {
         } else {
           reject(`Input tidak valid. Masukkan jumlah yang benar`);
         }
-      }, 2000);
+      }, 700);
     });
   }
 }

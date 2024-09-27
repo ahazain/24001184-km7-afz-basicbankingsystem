@@ -6,7 +6,7 @@ class BankAccount {
   deposit(amount) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        if (!isNaN(amount) && amount >= 0) {
+        if (!isNaN(amount) && amount > 0) {
           this.saldo += amount;
           resolve(`Deposit berhasil. Saldo Anda: Rp ${this.saldo}`);
         } else {
@@ -33,5 +33,3 @@ class BankAccount {
     });
   }
 }
-
-// module.exports = BankAccount;

@@ -1,5 +1,3 @@
-// const BankAccount = require("./bank_account");
-
 const myAccount = new BankAccount(1000);
 
 function updateSaldo(newSaldo) {
